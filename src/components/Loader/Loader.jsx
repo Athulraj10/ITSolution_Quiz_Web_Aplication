@@ -2,7 +2,7 @@ import { Spinner } from "@chakra-ui/react";
 
 const Loader = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <Spinner
         thickness="4px"
         speed="0.65s"
