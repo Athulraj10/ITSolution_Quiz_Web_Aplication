@@ -22,7 +22,7 @@ const Quiz = () => {
       const result = await fetch(APIUrl);
       const data = await result.json();
       setResult("");
-    setIsLoaded(false);
+      setIsLoaded(false);
       showQuestion(data?.results[0]);
     } catch (error) {
       console.error("Error fetching question:", error);
@@ -44,7 +44,7 @@ const Quiz = () => {
     if (selectedAnswer !== null) {
       const selectedOption = options[selectedAnswer];
       const correctAnswer = HTMLDecode(options[options.length - 1]);
-  
+
       if (selectedOption === correctAnswer) {
         setCorrectScore(correctScore + 1);
         setResult(
@@ -63,7 +63,7 @@ const Quiz = () => {
           </p>
         );
       }
-  
+
       setTimeout(() => {
         checkCount();
         loadQuestion();
@@ -76,7 +76,6 @@ const Quiz = () => {
       );
     }
   };
-  
 
   const HTMLDecode = (textString) => {
     let doc = new DOMParser().parseFromString(textString, "text/html");
@@ -110,7 +109,8 @@ const Quiz = () => {
   return isLoaded ? (
     <Loader />
   ) : (
-    <div className="flex items-center justify-center h-screen bg-gray-200">
+  <div >
+      <div className="flex items-center justify-center h-screen">
       <div className="bg-white p-8 rounded-lg shadow-md">
         <div className="mb-4 text-xl font-bold">{question}</div>
         <ul className="space-y-2">
@@ -147,6 +147,7 @@ const Quiz = () => {
         <p className="text-gray-600">Total Questions: {totalQuestion}</p>
       </div>
     </div>
+  </div>
   );
 };
 
